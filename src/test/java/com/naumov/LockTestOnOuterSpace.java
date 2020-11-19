@@ -1,6 +1,7 @@
 package com.naumov;
 
 import com.naumov.lock.FirstLock;
+import com.naumov.lock.SecondLock;
 import com.naumov.sc.space.OuterSpace;
 import com.naumov.thread.NumberedThread;
 import org.junit.jupiter.api.Test;
@@ -10,8 +11,16 @@ import static com.naumov.thread.NumberedThread.currentThreadId;
 class LockTestOnOuterSpace {
 
     @Test
+    public void testSecondLock() {
+        OuterSpace outerSpace = new OuterSpace(new SecondLock());
+        // deadlocks
+        runSpaceWalks(outerSpace, 10);
+    }
+
+    @Test
     public void testFirstLock() {
         OuterSpace outerSpace = new OuterSpace(new FirstLock());
+        // deadlocks
         runSpaceWalks(outerSpace, 10);
     }
 
@@ -20,6 +29,7 @@ class LockTestOnOuterSpace {
             System.out.println("Thread " + currentThreadId() + " start");
             for (int i = iterations; i > 0; i--) {
                 outerSpace.spaceWalk();
+//                System.out.println("Thread " + currentThreadId() + " finished " + i + "th iteration.");
             }
         };
 

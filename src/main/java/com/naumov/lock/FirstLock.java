@@ -4,6 +4,7 @@ import static com.naumov.thread.NumberedThread.currentThreadId;
 
 /**
  * It is a mutex, but it is not deadlock-free
+ * Лочится, когда оба потока ставят себе true, при этом ни один не успевает добраться до проверки цикла
  */
 public class FirstLock implements Lock {
     private final boolean[] flags = new boolean[2];
