@@ -1,4 +1,4 @@
-package com.naumov.counter;
+package com.naumov.sc.counter;
 
 import com.naumov.lock.Lock;
 
