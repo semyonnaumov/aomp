@@ -7,18 +7,20 @@ import static com.naumov.thread.NumberedThread.currentThreadId;
  * Лочится, когда оба потока ставят себе true, при этом ни один не успевает добраться до проверки цикла
  */
 public class FirstLock implements Lock {
-    private final boolean[] flags = new boolean[2];
+    private final boolean[] interestedThreads = new boolean[2];
 
     @Override
     public void lock() {
-        flags[currentThreadId()] = true;
+        int me = currentThreadId();
+        int other = 1 - currentThreadId();
+        interestedThreads[me] = true;
 
         // wait until other thread releases the lock
-        while (flags[1 - currentThreadId()]) {}
+        while (interestedThreads[other]) {}
     }
 
     @Override
     public void unlock() {
-        flags[currentThreadId()] = false;
+        interestedThreads[currentThreadId()] = false;
     }
 }

@@ -1,6 +1,7 @@
 package com.naumov;
 
 import com.naumov.lock.FirstLock;
+import com.naumov.lock.PetersonLock;
 import com.naumov.lock.SecondLock;
 import com.naumov.sc.space.OuterSpace;
 import com.naumov.thread.NumberedThread;
@@ -21,6 +22,13 @@ class LockTestOnOuterSpace {
     public void testFirstLock() {
         OuterSpace outerSpace = new OuterSpace(new FirstLock());
         // deadlocks
+        runSpaceWalks(outerSpace, 10);
+    }
+
+    @Test
+    public void testPetersonLock() {
+        OuterSpace outerSpace = new OuterSpace(new PetersonLock());
+
         runSpaceWalks(outerSpace, 10);
     }
 
