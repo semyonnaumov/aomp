@@ -7,7 +7,7 @@ import static com.naumov.thread.NumberedThread.currentThreadId;
  * Лочится когда исполнение становится однопоточным: когда один поток закончил выполнение, второй сразу повисает
  */
 public class SecondLock implements Lock {
-    private volatile int victim;
+    private volatile int victim; // have to be volatile to be consistent for both threads
 
     @Override
     public void lock() {
