@@ -2,6 +2,9 @@ package com.naumov.lock;
 
 import static com.naumov.thread.NumberedThread.currentThreadId;
 
+/**
+ * Mutex, deadlock-free, starvation-free
+ */
 public class FilterLock implements Lock {
     private final int numberOfThreads;
     private final int[] level;
