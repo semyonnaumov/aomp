@@ -1,13 +1,12 @@
 package com.naumov.sc.space;
 
 import com.naumov.lock.Lock;
+import com.naumov.thread.ThreadIdAware;
 
 import java.util.EmptyStackException;
 import java.util.Stack;
 
-import static com.naumov.thread.NumberedThread.currentThreadId;
-
-public class OuterSpace {
+public class OuterSpace extends ThreadIdAware {
     private final Stack<Object> spaceSuitHolder;
     private final Lock lock;
 

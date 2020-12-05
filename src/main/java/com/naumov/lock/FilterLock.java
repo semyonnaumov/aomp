@@ -1,11 +1,11 @@
 package com.naumov.lock;
 
-import static com.naumov.thread.NumberedThread.currentThreadId;
+import com.naumov.thread.ThreadIdAware;
 
 /**
  * Mutex, deadlock-free, starvation-free
  */
-public class FilterLock implements Lock {
+public class FilterLock extends ThreadIdAware implements Lock {
     private final int numberOfThreads;
     private final int[] level;
     private final int[] victim;

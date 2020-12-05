@@ -16,15 +16,15 @@ import static com.naumov.thread.NumberedThread.currentThreadId;
 class LockTestOnOuterSpace {
 
     @Test
-    public void testSecondLock() {
-        OuterSpace outerSpace = new OuterSpace(new SecondLock());
+    public void testFirstLock() {
+        OuterSpace outerSpace = new OuterSpace(new FirstLock());
         // deadlocks
         runSpaceWalks(outerSpace, 2, 10);
     }
 
     @Test
-    public void testFirstLock() {
-        OuterSpace outerSpace = new OuterSpace(new FirstLock());
+    public void testSecondLock() {
+        OuterSpace outerSpace = new OuterSpace(new SecondLock());
         // deadlocks
         runSpaceWalks(outerSpace, 2, 10);
     }
