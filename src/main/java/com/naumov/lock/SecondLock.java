@@ -13,9 +13,10 @@ public class SecondLock extends ThreadIdAware implements Lock {
     public void lock() {
         victim = currentThreadId();
 
-        // wait until other thread comes and gets the victim
-        // this thread will not continue until others come
-        while (victim == currentThreadId()) {}
+        // deadlocks here when
+        //     1. There's no other threads to be the victim
+        //     2. Other threads have finished and will not come to be the victim
+        while (victim == currentThreadId()) {} // wait until other thread comes and gets the victim
     }
 
     @Override

@@ -15,8 +15,11 @@ public class FirstLock extends ThreadIdAware implements Lock {
         int other = 1 - currentThreadId();
         interestedThreads[me] = true;
 
-        // wait until other thread releases the lock
-        while (interestedThreads[other]) {}
+        // deadlocks here when
+        //     write_0(interestedThreads[0] = true) -> write_1(interestedThreads[1] = true) -> read_0(interestedThreads[1] == true)
+        //     and
+        //     write_0(interestedThreads[0] = true) -> write_1(interestedThreads[1] = true) -> read_1(interestedThreads[0] == true)
+        while (interestedThreads[other]) {}  // wait until other thread releases the lock
     }
 
     @Override
