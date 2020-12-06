@@ -1,9 +1,12 @@
-package com.naumov.lock;
+package com.naumov.lock.theory;
 
+import com.naumov.lock.Lock;
 import com.naumov.thread.NumberedThreadAware;
 
 /**
- * It is a mutex, deadlock-free, starvation-free
+ * - Mutex
+ * - Deadlock-Free
+ * - Starvation-Free
  */
 public class PetersonLock extends NumberedThreadAware implements Lock {
     private final boolean[] interestedThreads = new boolean[2];

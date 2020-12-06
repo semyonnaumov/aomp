@@ -1,10 +1,11 @@
-package com.naumov.lock;
+package com.naumov.lock.theory;
 
+import com.naumov.lock.Lock;
 import com.naumov.thread.NumberedThreadAware;
 
 /**
- * It is a mutex, but it is not deadlock-free
- * Лочится, когда оба потока ставят себе true, при этом ни один не успевает добраться до проверки цикла
+ * - Mutex
+ * - NOT Deadlock-Free
  */
 public class FirstLock extends NumberedThreadAware implements Lock {
     private final boolean[] interestedThreads = new boolean[2];

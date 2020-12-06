@@ -1,11 +1,16 @@
-package com.naumov.lock;
+package com.naumov.lock.theory;
 
+import com.naumov.lock.Lock;
 import com.naumov.thread.NumberedThreadAware;
 
 import java.util.Arrays;
 
 /**
- * Mutex, deadlock-free, first-come-first-served, starvation-free
+ * - Mutex
+ * - Deadlock-Free
+ * - Starvation-Free
+ * - First-Come-First-Served
+ *
  * Can overflow!!!
  */
 public class BakeryLock extends NumberedThreadAware implements Lock {

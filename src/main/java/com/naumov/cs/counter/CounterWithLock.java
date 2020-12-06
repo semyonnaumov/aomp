@@ -23,4 +23,9 @@ public class CounterWithLock implements Counter {
             lock.unlock();
         }
     }
+
+    @Override
+    public int get() {
+        return value;
+    }
 }

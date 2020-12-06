@@ -12,4 +12,9 @@ public class NaiveCounter implements Counter {
         value = value + 1; // end of danger zone
         return temp;
     }
+
+    @Override
+    public int get() {
+        return value;
+    }
 }

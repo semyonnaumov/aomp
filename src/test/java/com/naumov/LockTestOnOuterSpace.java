@@ -1,7 +1,8 @@
 package com.naumov;
 
-import com.naumov.lock.*;
 import com.naumov.cs.space.OuterSpace;
+import com.naumov.lock.TASLock;
+import com.naumov.lock.theory.*;
 import com.naumov.thread.NumberedThread;
 import com.naumov.thread.NumberedThreadAware;
 import org.junit.jupiter.api.Test;
@@ -42,6 +43,13 @@ class LockTestOnOuterSpace extends NumberedThreadAware {
     public void testBakeryLock() {
         int threadNumber = 5;
         OuterSpace outerSpace = new OuterSpace(new BakeryLock(threadNumber));
+        runSpaceWalks(outerSpace, threadNumber, 10);
+    }
+
+    @Test
+    public void testTasLock() {
+        int threadNumber = 5;
+        OuterSpace outerSpace = new OuterSpace(new TASLock());
         runSpaceWalks(outerSpace, threadNumber, 10);
     }
 

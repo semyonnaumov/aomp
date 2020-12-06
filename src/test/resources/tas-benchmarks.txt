@@ -1,0 +1,19 @@
+1 threads
+TASLockPerformanceTest.ConcurrentCounter             thrpt    5  302621145,445 ± 44497016,949  ops/s
+TASLockPerformanceTest.ConcurrentCounter:gets        thrpt    5  275399760,076 ± 41623536,408  ops/s
+TASLockPerformanceTest.ConcurrentCounter:increments  thrpt    5   27221385,368 ±  3841829,943  ops/s
+
+2 threads
+TASLockPerformanceTest.ConcurrentCounter             thrpt    5  2077318339,862 ± 283375727,256  ops/s
+TASLockPerformanceTest.ConcurrentCounter:gets        thrpt    5  2068040282,377 ± 281970475,364  ops/s
+TASLockPerformanceTest.ConcurrentCounter:increments  thrpt    5     9278057,485 ±   1489547,331  ops/s
+
+4 threads
+TASLockPerformanceTest.ConcurrentCounter             thrpt    5  3173681344,176 ± 445635029,663  ops/s
+TASLockPerformanceTest.ConcurrentCounter:gets        thrpt    5  3168473222,995 ± 445152007,343  ops/s
+TASLockPerformanceTest.ConcurrentCounter:increments  thrpt    5     5208121,181 ±    495436,662  ops/s
+
+8 threads
+TASLockPerformanceTest.ConcurrentCounter             thrpt    5  4067105538,246 ± 263772022,030  ops/s
+TASLockPerformanceTest.ConcurrentCounter:gets        thrpt    5  4063862550,980 ± 263585493,830  ops/s
+TASLockPerformanceTest.ConcurrentCounter:increments  thrpt    5     3242987,266 ±    209100,811  ops/s
