@@ -1,12 +1,12 @@
 package com.naumov.lock;
 
-import com.naumov.thread.ThreadIdAware;
+import com.naumov.thread.NumberedThreadAware;
 
 /**
  * It is a mutex, but it is not deadlock-free
  * Лочится когда исполнение становится однопоточным: когда один поток закончил выполнение, второй сразу повисает
  */
-public class SecondLock extends ThreadIdAware implements Lock {
+public class SecondLock extends NumberedThreadAware implements Lock {
     private volatile int victim; // have to be volatile to be consistent for both threads
 
     @Override

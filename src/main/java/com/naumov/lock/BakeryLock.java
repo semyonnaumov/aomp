@@ -1,6 +1,6 @@
 package com.naumov.lock;
 
-import com.naumov.thread.ThreadIdAware;
+import com.naumov.thread.NumberedThreadAware;
 
 import java.util.Arrays;
 
@@ -8,7 +8,7 @@ import java.util.Arrays;
  * Mutex, deadlock-free, first-come-first-served, starvation-free
  * Can overflow!!!
  */
-public class BakeryLock extends ThreadIdAware implements Lock {
+public class BakeryLock extends NumberedThreadAware implements Lock {
     private final int numberOfThreads;
     private final boolean[] interestedThreads;
     private final long[] label;

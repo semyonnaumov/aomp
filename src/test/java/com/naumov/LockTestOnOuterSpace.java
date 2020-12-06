@@ -3,13 +3,13 @@ package com.naumov;
 import com.naumov.lock.*;
 import com.naumov.cs.space.OuterSpace;
 import com.naumov.thread.NumberedThread;
-import com.naumov.thread.ThreadIdAware;
+import com.naumov.thread.NumberedThreadAware;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class LockTestOnOuterSpace extends ThreadIdAware {
+class LockTestOnOuterSpace extends NumberedThreadAware {
 
     @Test
     public void testFirstLock() {

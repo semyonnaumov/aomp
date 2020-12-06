@@ -1,6 +1,6 @@
 package com.naumov.thread;
 
-public class ThreadIdAware {
+public class NumberedThreadAware {
     protected int currentThreadId() {
         return NumberedThread.currentThreadId();
     }
