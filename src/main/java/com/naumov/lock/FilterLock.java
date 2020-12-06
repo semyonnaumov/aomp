@@ -12,8 +12,8 @@ public class FilterLock extends ThreadIdAware implements Lock {
 
     public FilterLock(int numberOfThreads) {
         this.numberOfThreads = numberOfThreads;
-        this.level = new int[numberOfThreads];
-        this.victim = new int[numberOfThreads];
+        this.level = new int[numberOfThreads]; // initially all = 0
+        this.victim = new int[numberOfThreads]; // initially all = 0
     }
 
     @Override

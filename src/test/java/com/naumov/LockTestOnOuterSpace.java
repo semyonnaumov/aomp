@@ -1,19 +1,15 @@
 package com.naumov;
 
-import com.naumov.lock.FilterLock;
-import com.naumov.lock.FirstLock;
-import com.naumov.lock.PetersonLock;
-import com.naumov.lock.SecondLock;
-import com.naumov.sc.space.OuterSpace;
+import com.naumov.lock.*;
+import com.naumov.cs.space.OuterSpace;
 import com.naumov.thread.NumberedThread;
+import com.naumov.thread.ThreadIdAware;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.naumov.thread.NumberedThread.currentThreadId;
-
-class LockTestOnOuterSpace {
+class LockTestOnOuterSpace extends ThreadIdAware {
 
     @Test
     public void testFirstLock() {
@@ -42,12 +38,19 @@ class LockTestOnOuterSpace {
         runSpaceWalks(outerSpace, threadNumber, 10);
     }
 
+    @Test
+    public void testBakeryLock() {
+        int threadNumber = 5;
+        OuterSpace outerSpace = new OuterSpace(new BakeryLock(threadNumber));
+        runSpaceWalks(outerSpace, threadNumber, 10);
+    }
+
     void runSpaceWalks(OuterSpace outerSpace, int threadNumber, int iterations) {
         Runnable runnable = () -> {
-            System.out.println("Thread " + currentThreadId() + " start");
+            System.out.println(printLogPrefix() + "start");
             for (int i = iterations; i > 0; i--) {
                 outerSpace.spaceWalk();
-//                System.out.println("Thread " + currentThreadId() + " finished " + i + "th iteration.");
+//                System.out.println(printLogPrefix() + "finished " + i + "th iteration.");
             }
         };
 

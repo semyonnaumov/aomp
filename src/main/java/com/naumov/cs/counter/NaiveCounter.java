@@ -1,4 +1,4 @@
-package com.naumov.sc.counter;
+package com.naumov.cs.counter;
 
 public class NaiveCounter implements Counter {
     private int value;
