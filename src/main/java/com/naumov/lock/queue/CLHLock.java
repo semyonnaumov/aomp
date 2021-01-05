@@ -49,7 +49,7 @@ public class CLHLock implements Lock {
         myNode.set(myPred.get()); // reuse predecessor node
     }
 
-    public static class QNode {
+    private static class QNode {
         private final AtomicBoolean locked = new AtomicBoolean(false);
 
         public boolean isLocked() {

@@ -4,6 +4,7 @@ import com.naumov.cs.space.OuterSpace;
 import com.naumov.lock.backoff.BackoffLock;
 import com.naumov.lock.queue.AndersonLock;
 import com.naumov.lock.queue.CLHLock;
+import com.naumov.lock.queue.MCSLock;
 import com.naumov.lock.tas.TASLock;
 import com.naumov.lock.tas.TATASLock;
 import com.naumov.lock.theory.*;
@@ -82,6 +83,13 @@ class LockTestOnOuterSpace extends NumberedThreadAware {
     public void testCLHLock() {
         int threadNumber = 5;
         OuterSpace outerSpace = new OuterSpace(new CLHLock());
+        runSpaceWalks(outerSpace, threadNumber, 10);
+    }
+
+    @Test
+    public void testMCSLock() {
+        int threadNumber = 5;
+        OuterSpace outerSpace = new OuterSpace(new MCSLock());
         runSpaceWalks(outerSpace, threadNumber, 10);
     }
 
