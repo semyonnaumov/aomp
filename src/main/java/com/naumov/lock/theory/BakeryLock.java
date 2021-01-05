@@ -32,7 +32,6 @@ public class BakeryLock extends NumberedThreadAware implements Lock {
         label[me] = Arrays.stream(label)
                 .max()
                 .orElseThrow(() -> new IllegalStateException("Wrong label.")) + 1;
-        System.out.println(printLogPrefix() + "curr max = " + label[me]);
 
         // spin while conflicts exist
         while (cannotGoFurther(me)) {}
