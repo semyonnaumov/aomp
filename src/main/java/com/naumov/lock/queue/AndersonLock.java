@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * - Starvation-Free
  * - First-Come-First-Served
  * - лучше BackoffLock, не простаивает по времени, но жрет лишнюю память и нужно знать кол-во потоков
- * - Can overflow!!!
+ * - Can overflow?!
  */
 public class AndersonLock implements Lock {
     private final ThreadLocal<Integer> mySlotIndex = ThreadLocal.withInitial(() -> 0);
