@@ -1,5 +1,6 @@
-package com.naumov.lock;
+package com.naumov.lock.tas;
 
+import com.naumov.lock.Lock;
 import com.naumov.thread.NumberedThreadAware;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -19,7 +20,7 @@ public class TATASLock extends NumberedThreadAware implements Lock {
             while (atomicBoolean.get()) { // just reading, not invalidating others' caches
             }
 
-            if (atomicBoolean.getAndSet(true)) return; // acquired lock
+            if (!atomicBoolean.getAndSet(true)) return; // acquired lock
         }
     }
 

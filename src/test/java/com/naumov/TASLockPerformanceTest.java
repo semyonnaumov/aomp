@@ -3,7 +3,7 @@ package com.naumov;
 import com.naumov.cs.counter.Counter;
 import com.naumov.cs.counter.CounterWithLock;
 import com.naumov.lock.Lock;
-import com.naumov.lock.TASLock;
+import com.naumov.lock.tas.TASLock;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
