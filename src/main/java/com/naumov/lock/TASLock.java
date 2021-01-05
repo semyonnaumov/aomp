@@ -15,7 +15,7 @@ public class TASLock extends NumberedThreadAware implements Lock {
 
     @Override
     public void lock() {
-        while (atomicBoolean.getAndSet(true) == true) {
+        while (atomicBoolean.getAndSet(true) == true) { // continuously invalidating others' caches while spinning
             // busy waiting aka spinning
         }
     }

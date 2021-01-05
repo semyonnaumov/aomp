@@ -16,7 +16,7 @@ public class TATASLock extends NumberedThreadAware implements Lock {
     @Override
     public void lock() {
         while (true) {
-            while (atomicBoolean.get()) {
+            while (atomicBoolean.get()) { // just reading, not invalidating others' caches
             }
 
             if (atomicBoolean.getAndSet(true)) return; // acquired lock
