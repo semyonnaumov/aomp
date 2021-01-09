@@ -39,7 +39,8 @@ public class PetersonLock extends NumberedThreadAware implements Lock {
 //
 //        \* thread states: idle, aquiring, aquired, finished
 //
-//        TypeOK == /\ flags \in [THREADS -> {TRUE, FALSE}]
+//        TypeOK == /\ tstate \in [THREADS -> 0..3]
+//        /\ flags \in [THREADS -> {TRUE, FALSE}]
 //        /\ victim \in THREADS
 //        /\ cs \subseteq THREADS
 //
@@ -77,7 +78,7 @@ public class PetersonLock extends NumberedThreadAware implements Lock {
 //        /\ cs' = cs \ {t}
 //        /\ UNCHANGED victim
 //
-//        Next == \A t \in THREADS : \/ RaiseFlag(t)
+//        Next == \E t \in THREADS : \/ RaiseFlag(t)
 //        \/ BecameVictim(t)
 //        \/ Enter(t)
 //        \/ Unlock(t)
@@ -86,7 +87,8 @@ public class PetersonLock extends NumberedThreadAware implements Lock {
 //
 //        =============================================================================
 //        \* Modification History
-//        \* Last modified Sat Jan 09 23:05:13 MSK 2021 by u17773014
+//        \* Last modified Sat Jan 09 23:30:38 MSK 2021 by u17773014
 //        \* Created Sat Jan 09 21:30:43 MSK 2021 by u17773014
+
 
 
