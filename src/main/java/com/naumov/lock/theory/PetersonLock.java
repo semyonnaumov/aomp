@@ -30,54 +30,54 @@ public class PetersonLock extends NumberedThreadAware implements Lock {
     }
 }
 
-//----------------------------- MODULE PetersonLock -----------------------------
+//----------------------------- MODULE FilterLock -----------------------------
 //
 //        EXTENDS Integers, FiniteSets
 //
-//        CONSTANT threads
+//        CONSTANT THREADS
 //        VARIABLES flags, tstate, victim, cs
 //
 //        \* thread states: idle, aquiring, aquired, finished
 //
-//        TypeOK == /\ flags \in [threads -> {TRUE, FALSE}]
-//        /\ victim \in threads
-//        /\ cs \subseteq threads
+//        TypeOK == /\ flags \in [THREADS -> {TRUE, FALSE}]
+//        /\ victim \in THREADS
+//        /\ cs \subseteq THREADS
 //
-//        Init == /\ tstate = [t \in threads |-> 0]
-//        /\ flags = [t \in threads |-> FALSE]
+//        Init == /\ tstate = [t \in THREADS |-> 0]
+//        /\ flags = [t \in THREADS |-> FALSE]
 //        /\ cs = {}
-//        /\ victim = CHOOSE x \in threads : TRUE
+//        /\ victim = CHOOSE x \in THREADS : TRUE
 //
 //        RaiseFlag(t) ==
-//        /\ tstate[t]= 0
-//        /\ flags = [flags EXCEPT ![t] = TRUE]
-//        /\ tstate = [tstate EXCEPT ![t] = 1]
+//        /\ tstate[t] = 0
+//        /\ flags' = [flags EXCEPT ![t] = TRUE]
+//        /\ tstate' = [tstate EXCEPT ![t] = 1]
 //        /\ UNCHANGED victim
 //        /\ UNCHANGED cs
 //
 //        BecameVictim(t) ==
 //        /\ tstate[t]= 1
 //        /\ UNCHANGED flags
-//        /\ tstate = [tstate EXCEPT ![t] = 2]
-//        /\ victim = t
+//        /\ tstate' = [tstate EXCEPT ![t] = 2]
+//        /\ victim' = t
 //        /\ UNCHANGED cs
 //
 //        Enter(t) ==
-//        /\ tstate[t]= 2
-//        /\ ~(\A s \in threads \ {t} : flags[s] /\ victim = t)
+//        /\ tstate[t] = 2
+//        /\ ~(\A s \in THREADS \ {t} : flags[s] /\ victim = t)
 //        /\ UNCHANGED flags
 //        /\ UNCHANGED victim
-//        /\ tstate = [tstate EXCEPT ![t] = 3]
+//        /\ tstate' = [tstate EXCEPT ![t] = 3]
 //        /\ cs' = cs \cup {t}
 //
 //        Unlock(t) ==
-//        /\ tstate[t]= 3
-//        /\ flags = [flags EXCEPT ![t] = FALSE]
-//        /\ tstate = [tstate EXCEPT ![t] = 0]
+//        /\ tstate[t] = 3
+//        /\ flags' = [flags EXCEPT ![t] = FALSE]
+//        /\ tstate' = [tstate EXCEPT ![t] = 0]
 //        /\ cs' = cs \ {t}
 //        /\ UNCHANGED victim
 //
-//        Next == \A t \in threads : \/ RaiseFlag(t)
+//        Next == \A t \in THREADS : \/ RaiseFlag(t)
 //        \/ BecameVictim(t)
 //        \/ Enter(t)
 //        \/ Unlock(t)
@@ -86,6 +86,7 @@ public class PetersonLock extends NumberedThreadAware implements Lock {
 //
 //        =============================================================================
 //        \* Modification History
-//        \* Last modified Sat Jan 09 22:32:44 MSK 2021 by u17773014
+//        \* Last modified Sat Jan 09 23:05:13 MSK 2021 by u17773014
 //        \* Created Sat Jan 09 21:30:43 MSK 2021 by u17773014
+
 
